@@ -26,9 +26,8 @@ def register(request):
 
 
 def registerSuccess(request):
-    customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now().order_by('-created_date')[:1]
+    customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now().order_by('-created_date'))[:1]
     return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
-
 
 
 ## 로그인
@@ -47,5 +46,4 @@ def customer_login(request):
             return redirect('')
         else:
             return render(request, '')
-
 

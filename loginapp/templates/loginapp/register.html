@@ -1,0 +1,8 @@
+{% block content %}
+<form method="POST" action="{% url 'loginapp:register' %}">{% csrf_token %}
+
+{{ form.email }}
+{{ form.password }}
+{{ form.phone_number }}
+
+{% endblock %}
