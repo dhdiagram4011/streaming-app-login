@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import StreamingUser
-from django.template.loader import redner_to_string
+from django.template.loader import render_to_string
 from django.contrib.auth.hashers import make_password
 from .forms import registerForm, loginForm 
 from django.contrib.auth import login, authenticate
