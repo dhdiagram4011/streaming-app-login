@@ -1,3 +1,26 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, is_password_usable
+from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+
+
+## streaming-service-login model
+
+#회원가입
+class StreamingUser(AbstractUser):
+    email = models.EmailField(max_length=30)
+    password = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=100)
+    created_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateTimeField(null=True, blank=True)
+
+
+    def publish(self):
+        self.published_date = timezone.now()
+    
+    def __str__(self):
+        return self.email
+
+
+
