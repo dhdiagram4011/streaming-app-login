@@ -7,11 +7,12 @@ from django.http import HttpResponseRedirect
 class registerForm(forms.ModelForm):
     class Meta:
         model = StreamingUser
-        fields = ['email','password','phone_number']
+        fields = ['username','mails','passwords','phone_numbers']
 
-    email = forms.EmailField(label="이메일", widget=forms.TextInput(attrs={'placeholder':'이메일'}))
-    password = forms.CharField(label="패스워드", widget=forms.TextInput(attrs={'placeholder':'패스워드'}))
-    phone_number = forms.CharField(label="휴대폰번호", widget=forms.TextInput(attrs={'placeholder':'휴대폰번호'}))
+    username = forms.CharField(label="아이디",widget=forms.TextInput(attrs={'placeholder':'아이디'})) 
+    mails = forms.EmailField(label="이메일", widget=forms.TextInput(attrs={'placeholder':'이메일'}))
+    passwords = forms.CharField(label="패스워드", widget=forms.PasswordInput(attrs={'placeholder':'패스워드'}))
+    phone_numbers = forms.CharField(label="휴대폰번호", widget=forms.TextInput(attrs={'placeholder':'휴대폰번호'}))
 
 
 class loginForm(forms.ModelForm):
@@ -19,7 +20,7 @@ class loginForm(forms.ModelForm):
         model = StreamingUser
         fields = ['email','password']
 
-    email = forms.EmailField(label="이메일", widget=forms.TextInput(attrs={'placeholder':'이메일'}))
-    password = forms.CharField(label="패스워드", widget=forms.TextInput(attrs={'placeholder':'패스워드'}))
+    mails = forms.EmailField(label="이메일", widget=forms.TextInput(attrs={'placeholder':'이메일'}))
+    passwords = forms.CharField(label="패스워드", widget=forms.TextInput(attrs={'placeholder':'패스워드'}))
     
 

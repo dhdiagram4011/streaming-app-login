@@ -2,6 +2,10 @@
 <form method = "POST">
 {% csrf_token %}
 
-{{ form.email }}
-{{ form.password }}
+{{ form.mails }}
+{{ form.passwords }}
 {% endblock %}
+<input type="submit", vlaue="로그인">
+</form>
+<input type="button" value="회원가입" onclick="location.href='/auth/register/'">
+

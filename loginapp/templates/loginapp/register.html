@@ -1,8 +1,10 @@
 {% block content %}
 <form method="POST" action="{% url 'loginapp:register' %}">{% csrf_token %}
 
-{{ form.email }}
-{{ form.password }}
-{{ form.phone_number }}
-
+{{ form.username }}
+{{ form.mails }}
+{{ form.passwords }}
+{{ form.phone_numbers }}
+<button type="submit" value="register_member">가입하기</button>
+</form>
 {% endblock %}

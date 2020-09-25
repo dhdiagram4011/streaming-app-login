@@ -10,7 +10,7 @@ from .models import StreamingUser
 
 
 class StreamingUserAdmin(admin.ModelAdmin):
-    list_display = ['email','password','phone_number','created_date','published_date']
+    list_display = ['username','mails','passwords','phone_numbers','created_date']
 
 
 admin.site.register(StreamingUser,StreamingUserAdmin)

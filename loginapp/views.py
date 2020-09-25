@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import StreamingUser
 from django.template.loader import render_to_string
 from django.contrib.auth.hashers import make_password
@@ -17,17 +17,19 @@ def register(request):
         form = registerForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            email = request.POST["email"]
-            password = request.POST["password"]
-            phone_number = request.POST["phone_number"]
-            post.set_password(password)
+            username = request.POST["username"]
+            mails = request.POST["mails"]
+            passwords = request.POST["passwords"]
+            phone_numbers = request.POST["phone_numbers"]
+            post.set_password(passwords)
             post.save()
-        return redirect('loginapp:registerSuccess')
-
+        #return redirect('loginapp:registerSuccess')
+        return render(request, 'loginapp/register_success.html')
 
 def registerSuccess(request):
-    customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now().order_by('-created_date'))[:1]
-    return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
+    customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
+    #return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
+    return render(request, 'loginapp/register_success.html')
 
 
 ## 로그인
@@ -36,12 +38,12 @@ def customer_login(request):
         form = loginForm()
         return render(request, 'loginapp/login.html', {'form':form})
     elif request.method == 'POST':
-        email = request.POST.get('email','')
-        password = request.POST.get('password','')
+        mails = request.POST.get('mails','')
+        passwords = request.POST.get('passwords','')
 
-        user = authenticate(email=email, password=password)
+        user = authenticate(mails=mails, passwords=passwords)
 
-        if email is not None:
+        if mails is not None:
             login(request, user)
             return redirect('')
         else:
