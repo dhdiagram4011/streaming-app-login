@@ -1,3 +1,14 @@
+{% block content %}
 <div>
 회원가입이 정상적으로 완료되었습니다.
+<br/>
+가입 정보는 아래와 같습니다<br/>
+{% for customer_list in customer_lists %}
+아이디 : {{ customer_list.username }}<br/>
+이메일 : {{ customer_list.mails }}<br/>
+휴대폰 번호 : {{ customer_list.phone_numbers }}<br/>
+가입일 : {{ customer_list.created_date }}<br/>
+{% endfor %}
+{% endblock %}
+
 </div>

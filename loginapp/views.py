@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import StreamingUser
+from django.utils import timezone
 from django.template.loader import render_to_string
 from django.contrib.auth.hashers import make_password
 from .forms import registerForm, loginForm 
@@ -23,13 +24,13 @@ def register(request):
             phone_numbers = request.POST["phone_numbers"]
             post.set_password(passwords)
             post.save()
-        #return redirect('loginapp:registerSuccess')
-        return render(request, 'loginapp/register_success.html')
+            customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
+        return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
 
 def registerSuccess(request):
     customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
-    #return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
-    return render(request, 'loginapp/register_success.html')
+    return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
+    #return render(request, 'loginapp/register_success.html')
 
 
 ## 로그인
