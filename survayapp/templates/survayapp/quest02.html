@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q2.정말로 나의 속마음과 개인적인 부분까지 터놓고 말할 수 있는 친구는 몇명?</strong><br/>
+<br/>
+{{ form.question_02 }} /명
+<button type="submit" value="3/9단계" onclick = "location.href='/survay/quest03/'">3/9단계</button>
+</form>
+{% endblock %}
+

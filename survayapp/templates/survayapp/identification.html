@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>이름이나 아이디를 입력해 주세요</strong><br/>
+<br/>
+{{ form.name }}
+<button type="submit" value="email" onclick = "location.href='/survay/email/'">이메일</button>
+</form>
+{% endblock %}
+

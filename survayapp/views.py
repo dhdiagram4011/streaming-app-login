@@ -56,7 +56,7 @@ def email(request):
 def quest01(request):
     if request.method == 'GET':
         form = quest01Form(request.GET)
-        return redner(request, 'survayapp/quest01.html', {'form':form})
+        return render(request, 'survayapp/quest01.html', {'form':form})
     else:
         form = quest01Form(request.POST)
         if form.is_valid():
@@ -89,7 +89,7 @@ def quest03(request):
             post = form.save(commit=False)
             question_03 = request.POST['question_03']
             post.save()
-        return redirect('survay:quest04')
+        return redirect('survayapp:quest04')
 
 
 def quest04(request):
@@ -146,7 +146,7 @@ def quest07(request):
 def quest08(request):
     if request.method == 'GET':
         form = quest08Form(request.GET)
-        return render(request, 'survayapp/queest08.html', {'form':form})
+        return render(request, 'survayapp/quest08.html', {'form':form})
     else:
         form = quest08Form(request.POST)
         post = form.save(commit=False)
@@ -164,7 +164,7 @@ def quest09(request):
         post = form.save(commit=False)
         question_09 = request.POST['question_09']
         post.save()
-    return render(request, 'suvrayapp/final.html')
+    return render(request, 'survayapp/final.html')
 
 
 

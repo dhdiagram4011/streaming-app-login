@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q7.내가 직업을 선택하는 기준은 () 이다. 예시) 연봉/미래의전망성</strong><br/>
+<br/>
+{{ form.question_07 }}
+<button type="submit" value="8/9단계" onclick = "location.href='/survay/quest08/'">8/9단계</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q1.나의 휴대폰에 저장되어 있는 "친구만" 의 전화번호 갯수는?</strong><br/>
+<br/>
+{{ form.question_01 }} /개
+<button type="submit" value="2/9단계" onclick = "location.href='/survay/quest02/'">2/9단계</button>
+</form>
+{% endblock %}
+
