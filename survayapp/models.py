@@ -36,6 +36,7 @@ class Survay_08(models.Model):
 class Survay_09(models.Model):
     question_09 = models.CharField(max_length=10)
 
+
 """
 1. 이름(실명 말고 개인이 입력하고 싶은 아이디) /name
 2. 이메일 /email

@@ -17,5 +17,3 @@ urlpatterns = [
     path('quest09/', quest09, name='quest09'),
 ]
 
-
-

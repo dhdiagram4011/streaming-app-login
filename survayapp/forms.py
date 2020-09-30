@@ -91,7 +91,3 @@ class quest09Form(forms.ModelForm):
 
     question_09 = forms.CharField(max_length=10)
 
-
-
-
-
