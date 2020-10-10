@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q4.나는 하루에 ()잔의 커피를 마신다</strong><br/>
+<br/>
+{{ form.question_04 }} /잔
+<button type="submit" value="5/9단계" onclick = "location.href='/survay/quest05/'">5/9단계</button>
+</form>
+{% endblock %}
+

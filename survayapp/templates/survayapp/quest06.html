@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q6.나는 주말에 업무적인 약속 말고 개인적인 약속이 ()개 있다</strong><br/>
+<br/>
+{{ form.question_06 }} /개
+<button type="submit" value="7/9단계" onclick = "location.href='/survay/quest07/'">7/9단계</button>
+</form>
+{% endblock %}
+

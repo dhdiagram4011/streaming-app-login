@@ -1,0 +1,11 @@
+{% block content %}
+<form method = "POST">
+{% csrf_token %}
+
+<strong>Q9.나는 사람을 볼적에 외모/성격/첫인상을 가장 먼저 보고 중요하게 생각한다.</strong><br/>
+<br/>
+{{ form.question_09 }}
+<button type="submit" value="final" onclick = "location.href='/survay/final/'">Exit</button>
+</form>
+{% endblock %}
+
