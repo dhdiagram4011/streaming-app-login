@@ -20,21 +20,22 @@ def msg_sender():
     response = urlopen(TEST_URL)
     print(response.status)
     API_URL = 'http://apis.aligo.in/send/'
-    headers = {'Content-type':'text/plain'}
+    headers = {'Content-type':'application/x-www-form-urlencoded'}
+
     data = {
         'key' : 'ubkm32s9fllu6ui96cq7uegwdk0oxhnc',
         'user_id' : 'dhdiagram',
         'sender' : '01021764011',
         'receiver' : '01021764011',
         'destination' : '01021764011|김도형',
-        'msg' : print(response.status),
+        'msg' : response.status,
         'title' : 'API TEST 입니다',
-        'rdate' : '20201010',
-        'rtime'  : '1400',
-        'testmode_yn'  : 'Y'
+        'rdate' : '20201011',
+        'rtime'  : '1223',
+        'testmode_yn' : 'n'
     }
 
-    requests.post(API_URL, data=data)
+    requests.post(API_URL, headers=headers, data=data)
 
 msg_sender()
 
