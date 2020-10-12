@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'survayapp',
     'searchEngine',
     'rest_framework',
-    'pushengine',
+    'pushEngine',
 ]
 
 MIDDLEWARE = [

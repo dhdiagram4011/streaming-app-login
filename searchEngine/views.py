@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from elasticsearch import Elasticsearch
+#from elasticsearch import Elasticsearch
 
 class SearchView(APIView):
     def get(self, request):
