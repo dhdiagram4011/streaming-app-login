@@ -23,17 +23,17 @@ def send(request):
             text = request.POST['text']
             post.save()
         return render(request, 'pushEngine/send_success.html')
-        
+
 
 
 def sendList(request):
-    if request.method == 'POST':
-        form = sendListForm(request.POST)    
-        ### action
-
-    else:
-
-
+    if request.method == 'GET':
+        form = sendListForm(request.GET)
+        sendQLists = MsgPush.objects.all()
+        return render(request, 'pushEngine/sendList.html', {'sendQList':sendQList})
+    elif request.method == 'POST':
+        return render(request, 'pushEngine/sendList_error.html')
+        
 
 def revList(request):
     if request.method == 'POST':
