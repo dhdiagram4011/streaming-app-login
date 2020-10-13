@@ -7,7 +7,3 @@ urlpattenrs = [
     path('sendList/', sendList, name=sendList),
     path('revList/', revList, name=revList),
 ]
-
-
-
-

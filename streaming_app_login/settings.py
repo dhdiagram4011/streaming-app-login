@@ -30,6 +30,34 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+
+# Django Server Self Connect
+
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +70,7 @@ INSTALLED_APPS = [
     'searchEngine',
     'rest_framework',
     'pushEngine',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
