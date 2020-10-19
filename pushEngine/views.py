@@ -1,20 +1,6 @@
 from django.shortcuts import render
 from .models import MsgPush
 
-#### urlconf List
-# path('send/', send, name=send),
-# path('sendList/', sendList, name=sendList),
-# path('revList/', revList, name=revList),
-
-### forms.py
-# model = MsgPush
-#         fields = ['sender','receiver','title','text'] 
-        
-#     sender = forms.CharField(max_length=13)
-#     receiver = forms.CharField(max_length=13)
-#     title = forms.CharField(max_length=100)
-#     text = forms.CharField(max_length=500)
-
 
 def MsgSend(request):
     if request.method == 'GET':
@@ -23,10 +9,35 @@ def MsgSend(request):
     elif request.method == 'POST':
         form = sendForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            send = request.POST['send']
-            receiver = request.POST['receiver']
-            title = request.POST['title']
-            text = request.POST['text']
-            post.save()
-        return render(request, 'pushEngine/send_success.html')
+            EKS_HOST = 'http://a8bdd5f7b96aa473ab24d95145037461-1710871681.ap-northeast-2.elb.amazonaws.com'
+            STREAMING_HOST = 'http://a35f02dcb552449a3b4c0d0f708075b2-507238096.ap-northeast-2.elb.amazonaws.com:9000'
+
+    
+        STM_PATH = [
+            "/auth/login",
+            "/auth/register",
+        ]
+
+    
+        for i in STM_PATH:
+
+            URL_ALL = STREAMING_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
+            response = requests.get(URL_ALL)
+            health_check = response.status_code ,':', URL_ALL.split(',')
+            print(health_check)
+            WEB_HOOK_URL = 'http://apis.aligo.in/send/'
+            headers = {'Content-type':'application/x-www-form-urlencoded'}
+            data = {
+                'key' : 'ubkm32s9fllu6ui96cq7uegwdk0oxhnc',
+                'user_id' : 'dhdiagram',
+                'sender' : request.POST['sender'],
+                'receiver' : request.POST['receiver'],
+                'destination' : request.POST['sender']|request.POST['sender']',
+                'msg' : health_check,
+                'title' : request.POST['title'],
+                'rdate' : '20201011',
+                'rtime'  : '1300',
+                'testmode_yn' : 'n'
+            }
+                requests.post(WEB_HOOK_URL, headers=headers, data=data)
+            return render(request, 'pushEngine/send_success.html')
