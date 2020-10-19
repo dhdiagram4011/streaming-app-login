@@ -98,32 +98,6 @@ def status_check():
 
 status_check()
 
-# def msg_sender():
-
-#     TEST_URL = 'http://www.google.com'
-#     response = urlopen(TEST_URL)
-#     print(response.status)
-#     API_URL = 'http://apis.aligo.in/send/'
-#     headers = {'Content-type':'application/x-www-form-urlencoded'}
-
-#     data = {
-#         'key' : 'ubkm32s9fllu6ui96cq7uegwdk0oxhnc',
-#         'user_id' : 'dhdiagram',
-#         'sender' : '01021764011',
-#         'receiver' : '01021764011',
-#         'destination' : '01021764011|김도형',
-#         'msg' : response.status,
-#         'title' : 'API TEST 입니다',
-#         'rdate' : '20201011',
-#         'rtime'  : '1223',
-#         'testmode_yn' : 'n'
-#     }
-
-#     requests.post(API_URL, headers=headers, data=data)
-
-# msg_sender()
-
-
 
 
 
