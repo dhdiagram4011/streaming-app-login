@@ -1,10 +1,10 @@
 from django.urls import path
 from searchEngine import views
+from .views import *
 
 
-urlpattenrs = [
-    path('send/', MsgSend, name=MsgSend),
-    path('sendList/', sendList, name=sendList),
-    path('revList/', revList, name=revList),
+urlpatterns = [
+    path('send/', MsgSend, name='MsgSend'),
+    # path('sendList/', sendList, name=sendList),
+    # path('revList/', revList, name=revList),
 ]
-

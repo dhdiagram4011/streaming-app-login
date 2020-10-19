@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import MsgPush
-
+from .forms import *
 
 def MsgSend(request):
     if request.method == 'GET':
@@ -11,14 +11,12 @@ def MsgSend(request):
         if form.is_valid():
             EKS_HOST = 'http://a8bdd5f7b96aa473ab24d95145037461-1710871681.ap-northeast-2.elb.amazonaws.com'
             STREAMING_HOST = 'http://a35f02dcb552449a3b4c0d0f708075b2-507238096.ap-northeast-2.elb.amazonaws.com:9000'
-
     
         STM_PATH = [
             "/auth/login",
             "/auth/register",
         ]
-
-    
+   
         for i in STM_PATH:
 
             URL_ALL = STREAMING_HOST + str(i.split(',')).replace('[','').replace(']','').replace('\'','')
@@ -32,12 +30,12 @@ def MsgSend(request):
                 'user_id' : 'dhdiagram',
                 'sender' : request.POST['sender'],
                 'receiver' : request.POST['receiver'],
-                'destination' : request.POST['sender']|request.POST['sender']',
+                'destination' : request.POST['sender']|request.POST['sender'],
                 'msg' : health_check,
                 'title' : request.POST['title'],
                 'rdate' : '20201011',
                 'rtime'  : '1300',
                 'testmode_yn' : 'n'
             }
-                requests.post(WEB_HOOK_URL, headers=headers, data=data)
-            return render(request, 'pushEngine/send_success.html')
+            requests.post(WEB_HOOK_URL, headers=headers, data=data)
+        return render(request, 'pushEngine/send_success.html')

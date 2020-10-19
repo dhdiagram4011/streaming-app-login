@@ -24,4 +24,5 @@ urlpatterns = [
     path('auth/', include('loginapp.urls')),
     path('survay/', include('survayapp.urls')),
     path('', include('searchEngine.urls')),
+    path('push/', include('pushEngine.urls')),
     ]
