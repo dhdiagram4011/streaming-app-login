@@ -5,6 +5,5 @@ from .views import *
 
 urlpatterns = [
     path('send/', MsgSend, name='MsgSend'),
-    # path('sendList/', sendList, name=sendList),
-    # path('revList/', revList, name=revList),
+    path('senddev/', MsgPushRepage.as_view()),
 ]
