@@ -6,7 +6,6 @@ from django.views.generic import ListView, View
 
 
 ## Class Type View
-
 class MsgPushRepage(View): #web browser url path /push/sendev/
     def get(self,request):
         form = MsgPushForm(request.GET)
