@@ -8,7 +8,8 @@ url = 'https://sms.gabia.com/oauth/token'
 payload = 'grant_type=client_credentials'
 headers = {
 'Content-Type':'application/x-www-form-urlencoded',
-'Authorization':'Basic fdc1cb65bdcb6b2629bb8104593697dc'
+'Authorization':'Basic fdc1cb65bdcb6b2629bb8104593697dc',
+'client_id' : 'dhdiagram4011'
 }
 #response = requests.request('POST', url, headers=headers, data=payload, allow_redirects=False)
 response = requests.request('POST', url, headers=headers, data=payload, allow_redirects=False)
