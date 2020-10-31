@@ -46,8 +46,8 @@ def register(request):
 
 
 def registerSuccess(request):
-    url = 'http://sms.gabia.com/oauth/token'
-    payload = 'grant_type=client_credentials'
+    url = 'http://sms.gabia.com/api/send/sms'
+    payload = 'phone=01021764011&callback=01021764011&message=SMS%20TEST%20MESSAGE&refkey=[[RESTAPITEST1549847130]]'
     headers = {
         'Content-Type':'application/x-www-form-urlencoded',
         'Authorization':'Basic a9903be045efa5815634ea150ef38947'
