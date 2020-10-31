@@ -5,6 +5,8 @@ from django.template.loader import render_to_string
 from django.contrib.auth.hashers import make_password
 from .forms import registerForm, loginForm 
 from django.contrib.auth import login, authenticate
+import requests
+import time
 
 
 #registerForm , loginForm
@@ -25,9 +27,36 @@ def register(request):
             post.set_password(passwords)
             post.save()
             customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
-        return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
+        #return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
+        return redirect('loginapp:registerSuccess')
+
+
+# url = 'https://sms.gabia.com/oauth/token'
+# payload = 'grant_type=client_credentials'
+# data = 'TESTAPI is Send'
+# headers = {
+# 'Content-Type':'application/x-www-form-urlencoded',
+# 'Authorization':'Basic fdc1cb65bdcb6b2629bb8104593697dc'
+# }
+# #response = requests.request('POST', url, headers=headers, data=payload, allow_redirects=False)
+# response = requests.request('POST', url, headers=headers, data=payload)
+# print(response)
+# print(response.status_code)
+# print(response.text)
+
 
 def registerSuccess(request):
+    url = 'http://sms.gabia.com/oauth/token'
+    payload = 'grant_type=client_credentials'
+    headers = {
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Authorization':'Basic fdc1cb65bdcb6b2629bb8104593697dc',
+        'client_id':'dhdiagram4011'
+    }
+    response = requests.post(url, headers=headers, data=payload)
+    print(response.text)
+    print(response.status_code)
+    print(response.json)
     customer_lists = StreamingUser.objects.filter(created_date__lte=timezone.now()).order_by('-created_date')[:1]
     return render(request, 'loginapp/register_success.html', {'customer_lists':customer_lists})
     #return render(request, 'loginapp/register_success.html')
