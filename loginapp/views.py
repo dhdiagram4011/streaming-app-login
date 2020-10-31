@@ -50,10 +50,9 @@ def registerSuccess(request):
     payload = 'grant_type=client_credentials'
     headers = {
         'Content-Type':'application/x-www-form-urlencoded',
-        'Authorization':'Basic fdc1cb65bdcb6b2629bb8104593697dc',
-        'client_id':'dhdiagram4011'
+        'Authorization':'Basic a9903be045efa5815634ea150ef38947'
     }
-    response = requests.post(url, headers=headers, data=payload)
+    response = requests.request('POST',url, headers=headers, data=payload, allow_redirects=False)
     print(response.text)
     print(response.status_code)
     print(response.json)
